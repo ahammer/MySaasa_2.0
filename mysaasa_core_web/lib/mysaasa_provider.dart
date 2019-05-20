@@ -1,7 +1,9 @@
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_web/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
 import 'package:mysaasa_core/redux/mysaasa_store.dart';
+
 
 class MySaasaProvider extends StatelessWidget {
   final Widget child;
@@ -15,6 +17,6 @@ class MySaasaProvider extends StatelessWidget {
 
     return Provider<Store<MySaasa>>.value(
         value: reduxStore,
-        child:  child);
+        child: StoreProvider(store: reduxStore, child: child));
   }
 }

@@ -29,6 +29,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.9"
+  flutter_redux:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "333b71aff035cfc19457b5090e250170b2d83c4f"
+      url: "https://github.com/ahammer/flutter_redux"
+    source: git
+    version: "0.5.3"
   flutter_web:
     dependency: "direct main"
     description:

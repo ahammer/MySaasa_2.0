@@ -11,7 +11,7 @@ import 'admin_screen.dart';
 
 void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
-  
+
   runApp(Provider<ModuleManager>.value(
       value: ModuleManager([UserModule(), HomeScreenModule()]),
       child: MySaasaProvider(child: AdminScreen())));

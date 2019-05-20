@@ -12,9 +12,13 @@ dependencies:
     path: ../mysaasa_core
   flutter_web: any
   flutter_web_ui: any
+  # We use our branch here of provider and flutter redux (compatible with web)
   provider:
     git:
       url: https://github.com/ahammer/provider
+  flutter_redux:
+    git:
+      url: https://github.com/ahammer/flutter_redux
 
 
 dependency_overrides:
