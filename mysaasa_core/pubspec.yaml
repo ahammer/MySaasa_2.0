@@ -14,7 +14,8 @@ dependencies:
   redux: ^3.0.0
   provider: ^2.0.1
   built_value: ^6.5.0
-
+  flutter_redux_navigation: ^0.4.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

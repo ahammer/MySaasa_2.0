@@ -12,8 +12,9 @@ class MySaasaProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Store<MySaasa> reduxStore = Store<MySaasa>(reducer, initialState: MySaasa((b)=>b.moduleStates = {}));
-        
+    Store<MySaasa> reduxStore = Store<MySaasa>(reducer,
+        initialState: MySaasa((b) => b.moduleStates = {}));
+
     return Provider<Store<MySaasa>>.value(
         value: reduxStore,
         child: StoreProvider(store: reduxStore, child: child));
