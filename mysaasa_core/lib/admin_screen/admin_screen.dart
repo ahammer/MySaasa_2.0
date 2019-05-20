@@ -6,29 +6,23 @@ import 'package:provider/provider.dart';
 
 class AdminScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Consumer<ModuleManager>(
-      builder: (context, moduleManager, child) => MaterialApp(
-          theme: ThemeData.light(),
-          title: Strings.title,
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text(Strings.title),
-              actions: <Widget>[
-                ...moduleManager.plugins.map((module)=>Icon(module.getIcon()))
-                ,Container(width:50)
-              ],
-            ),
+  Widget build(BuildContext context) {
+    final modules = Provider.of<ModuleManager>(context).plugins;
+    Map<String, WidgetBuilder> routes = Map();
 
-            drawer: Container(color: Theme.of(context).accentColor, width: 200),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Hello, Flutter!',
-                  ),
-                ],
-              ),
-            ), // This trailing comma makes auto-formatting nicer for build methods.
-          )));
+    modules.forEach((it) => routes[it.getRoute()] = (ctx) => Scaffold(
+        body: it.getBody(),
+        appBar: AppBar(
+          title: Text(Strings.title),
+          actions: <Widget>[...modules.map((it)=>Icon(it.getIcon())), Container(width: 100,)],
+        )));
+
+    return Consumer<ModuleManager>(
+        builder: (context, moduleManager, child) => MaterialApp(
+              theme: ThemeData.light(),
+              title: Strings.title,
+              initialRoute: "/",
+              routes: routes,
+            ));
+  }
 }

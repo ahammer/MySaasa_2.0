@@ -9,13 +9,13 @@ abstract class Module {
   String getTitle();  
 
   /// The route of the module (e.g. /login)
-  String route();
+  String getRoute();
 
   /// The side-nav when the module is active
   Widget getSideNavWidget();  
 
   /// The main body of this widget
-  Widget getBodyWidget();  
+  Widget getBody();  
 
   IconData getIcon();
 
