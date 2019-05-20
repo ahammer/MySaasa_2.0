@@ -4,7 +4,7 @@ import 'package:mysaasa_core/module.dart';
 
 class UserModule extends Module {
   @override
-  Widget getBody() => Text("Body");
+  Widget getBody() => Container(color:Colors.yellow);
 
   @override
   Widget getSideNavWidget() => Text("Side Nav");
