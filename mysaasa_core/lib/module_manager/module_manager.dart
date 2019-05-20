@@ -9,7 +9,11 @@ class ModuleManager extends StatelessWidget {
 
   const ModuleManager({Key key, this.plugins, this.child}) : super(key: key);  
 
+  //Provides each of the Modules, and this to see the Registry
   @override
-  Widget build(BuildContext context) => Provider<ModuleManager>.value(value:this, child: child);
+  Widget build(BuildContext context) => MultiProvider(providers:[
+    ...plugins.map((t) => Provider.value(value: t))
+    , Provider.value(value:this)
+  ], child: child);
 }
 
