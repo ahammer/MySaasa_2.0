@@ -17,13 +17,12 @@ class _$MySaasaSerializer implements StructuredSerializer<MySaasa> {
   @override
   Iterable serialize(Serializers serializers, MySaasa object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.id != null) {
-      result
-        ..add('id')
-        ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
-    }
+    final result = <Object>[
+      'moduleStates',
+      serializers.serialize(object.moduleStates,
+          specifiedType: const FullType(
+              Map, const [const FullType(Type), const FullType(dynamic)])),
+    ];
 
     return result;
   }
@@ -39,9 +38,12 @@ class _$MySaasaSerializer implements StructuredSerializer<MySaasa> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+        case 'moduleStates':
+          result.moduleStates = serializers.deserialize(value,
+              specifiedType: const FullType(Map, const [
+                const FullType(Type),
+                const FullType(dynamic)
+              ])) as Map<Type, dynamic>;
           break;
       }
     }
@@ -52,12 +54,16 @@ class _$MySaasaSerializer implements StructuredSerializer<MySaasa> {
 
 class _$MySaasa extends MySaasa {
   @override
-  final int id;
+  final Map<Type, dynamic> moduleStates;
 
   factory _$MySaasa([void Function(MySaasaBuilder) updates]) =>
       (new MySaasaBuilder()..update(updates)).build();
 
-  _$MySaasa._({this.id}) : super._();
+  _$MySaasa._({this.moduleStates}) : super._() {
+    if (moduleStates == null) {
+      throw new BuiltValueNullFieldError('MySaasa', 'moduleStates');
+    }
+  }
 
   @override
   MySaasa rebuild(void Function(MySaasaBuilder) updates) =>
@@ -69,32 +75,35 @@ class _$MySaasa extends MySaasa {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MySaasa && id == other.id;
+    return other is MySaasa && moduleStates == other.moduleStates;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, id.hashCode));
+    return $jf($jc(0, moduleStates.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MySaasa')..add('id', id)).toString();
+    return (newBuiltValueToStringHelper('MySaasa')
+          ..add('moduleStates', moduleStates))
+        .toString();
   }
 }
 
 class MySaasaBuilder implements Builder<MySaasa, MySaasaBuilder> {
   _$MySaasa _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  Map<Type, dynamic> _moduleStates;
+  Map<Type, dynamic> get moduleStates => _$this._moduleStates;
+  set moduleStates(Map<Type, dynamic> moduleStates) =>
+      _$this._moduleStates = moduleStates;
 
   MySaasaBuilder();
 
   MySaasaBuilder get _$this {
     if (_$v != null) {
-      _id = _$v.id;
+      _moduleStates = _$v.moduleStates;
       _$v = null;
     }
     return this;
@@ -115,7 +124,7 @@ class MySaasaBuilder implements Builder<MySaasa, MySaasaBuilder> {
 
   @override
   _$MySaasa build() {
-    final _$result = _$v ?? new _$MySaasa._(id: id);
+    final _$result = _$v ?? new _$MySaasa._(moduleStates: moduleStates);
     replace(_$result);
     return _$result;
   }
