@@ -12,6 +12,9 @@ dependencies:
     path: ../mysaasa_core
   flutter_web: any
   flutter_web_ui: any
+  provider:
+    git:
+      url: https://github.com/ahammer/provider
 
 
 dependency_overrides:

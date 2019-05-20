@@ -82,6 +82,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.2"
+  provider:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "64bb0b1b0ad137198fafa2ae87e0f279de9e6c8a"
+      url: "https://github.com/ahammer/provider"
+    source: git
+    version: "2.0.1"
   quiver:
     dependency: transitive
     description:

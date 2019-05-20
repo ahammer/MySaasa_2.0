@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_web/material.dart';
+import 'package:flutter_web/widgets.dart';
 import 'package:mysaasa_core/module_manager/module_manager.dart';
 import 'package:mysaasa_core/strings/strings.dart';
-import 'package:mysaasa_core_flutter/mysaasa_flutter_module.dart';
+import 'package:mysaasa_core_web/mysaasa_flutter_module.dart';
 import 'package:provider/provider.dart';
 
 class AdminScreen extends StatelessWidget {
@@ -10,8 +10,8 @@ class AdminScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ModuleManager>(
         builder: (ctx, moduleManager, _) =>
-            ChangeNotifierProvider<AdminScreenState>.value(
-                notifier: AdminScreenState(moduleManager),
+            Provider<AdminScreenState>.value(
+                value: AdminScreenState(moduleManager),
                 child: MaterialApp(
                     theme: ThemeData.light(),
                     title: Strings.title,
@@ -35,7 +35,7 @@ class AdminScreen extends StatelessWidget {
   }
 }
 
-class AdminScreenState with ChangeNotifier {
+class AdminScreenState  {
   FlutterModule selectedModule;
 
   AdminScreenState(ModuleManager moduleManager) {
@@ -44,6 +44,6 @@ class AdminScreenState with ChangeNotifier {
 
   setModule(FlutterModule it) {
     selectedModule = it;
-    notifyListeners();
+    //notifyListeners();
   }
 }
