@@ -3,16 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:mysaasa_core/module.dart';
 import 'package:mysaasa_core/module_manager/module_manager.dart';
 import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
-import 'package:mysaasa_core/redux/mysaasa_store.dart';
 import 'package:mysaasa_core/strings/strings.dart';
 import 'package:provider/provider.dart';
-import 'package:redux/redux.dart';
 
 const navigatorKey = GlobalKey;
 
 class AdminScreen extends StatelessWidget {
-  //
-
   @override
   Widget build(BuildContext context) {
     return Consumer<ModuleManager>(
@@ -29,14 +25,14 @@ class AdminScreen extends StatelessWidget {
                             .map((it) => Consumer<AdminScreenState>(
                                 builder: (ctx, state, _) => IconButton(
                                       onPressed: () => state.setModule(it),
-                                      icon: Icon(it.getIcon()),
+                                      icon: Icon(Icons.device_unknown),
                                     ))),
                         Container(width: 100)
                       ],
                     ),
                     body: Consumer<AdminScreenState>(
                         builder: (ctx, state, _) =>
-                            state.selectedModule.getBody())),
+                            Container(color: Colors.blue,))),
                 navigatorKey: NavigatorHolder.navigatorKey)));
   }
 }

@@ -1,0 +1,12 @@
+name: mysaasa_core_web
+description: Core tools for the web-flutter
+version: 0.0.1
+author: Adam Hammer
+homepage: https://www.mysaasa.com
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  mysaasa_core:
+    path: ../mysaasa_core
