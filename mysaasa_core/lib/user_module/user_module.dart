@@ -13,9 +13,11 @@ class UserModule extends Module {
   String getTitle() => "User Module";
 
   @override
-  String route() {
-    
-    return "/User";
-  }
+  String route() => "/User";
+
+  @override
+  IconData getIcon() => Icons.supervised_user_circle;
+  
+
 
 }

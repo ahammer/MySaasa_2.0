@@ -16,4 +16,7 @@ abstract class Module {
 
   /// The main body of this widget
   Widget getBodyWidget();  
+
+  IconData getIcon();
+
 }
