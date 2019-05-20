@@ -10,3 +10,17 @@ environment:
 dependencies:
   mysaasa_core:
     path: ../mysaasa_core
+  flutter_web: any
+  flutter_web_ui: any
+
+
+dependency_overrides:
+  flutter_web:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web
+  flutter_web_ui:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web_ui
+

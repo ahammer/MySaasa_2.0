@@ -1,6 +1,8 @@
 
-import 'package:flutter/material.dart';
-import 'package:mysaasa_core_flutter/mysaasa_flutter_module.dart';
+import 'package:flutter_web/material.dart';
+import 'package:flutter_web/widgets.dart';
+
+import '../mysaasa_flutter_module.dart';
 
 class HomeScreenModule extends FlutterModule {
 
