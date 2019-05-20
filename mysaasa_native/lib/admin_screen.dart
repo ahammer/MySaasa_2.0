@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mysaasa_core/module_manager/module_manager.dart';
 import 'package:mysaasa_core/strings/strings.dart';
+import 'package:mysaasa_core_flutter/core_modules/home_screen_module.dart';
 import 'package:mysaasa_core_flutter/mysaasa_flutter_module.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class AdminScreenState with ChangeNotifier {
   FlutterModule selectedModule;
 
   AdminScreenState(ModuleManager moduleManager) {
-    selectedModule = moduleManager.plugins[0];
+    selectedModule = moduleManager.plugins.firstWhere((it)=>it is HomeScreenModule);
   }
 
   setModule(FlutterModule it) {
