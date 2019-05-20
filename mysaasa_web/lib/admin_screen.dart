@@ -10,8 +10,8 @@ class AdminScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ModuleManager>(
         builder: (ctx, moduleManager, _) =>
-            Provider<AdminScreenState>.value(
-                value: AdminScreenState(moduleManager),
+            ListenableProvider<AdminScreenState>.value(
+                listenable: AdminScreenState(moduleManager),
                 child: MaterialApp(
                     theme: ThemeData.light(),
                     title: Strings.title,
@@ -35,8 +35,10 @@ class AdminScreen extends StatelessWidget {
   }
 }
 
-class AdminScreenState  {
+class AdminScreenState implements Listenable {
   FlutterModule selectedModule;
+
+  List<VoidCallback> listeners = List();
 
   AdminScreenState(ModuleManager moduleManager) {
     selectedModule = moduleManager.plugins[0];
@@ -44,6 +46,16 @@ class AdminScreenState  {
 
   setModule(FlutterModule it) {
     selectedModule = it;
-    //notifyListeners();
+    listeners.forEach((it)=>it());
+  }
+
+  @override
+  void addListener(listener) {
+   listeners.add(listener);
+  }
+
+  @override
+  void removeListener(listener) {
+    listeners.remove(listener);
   }
 }
