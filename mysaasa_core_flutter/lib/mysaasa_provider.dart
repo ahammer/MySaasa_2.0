@@ -1,10 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
-
-import 'mysaasa_store.dart';
+import 'package:mysaasa_core/redux/mysaasa_store.dart';
 
 class MySaasaProvider extends StatelessWidget {
   final Widget child;
@@ -14,8 +12,7 @@ class MySaasaProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Store<MySaasa> reduxStore = Store<MySaasa>(reducer,
-        initialState: MySaasa((b) => b.moduleStates = {}),
-        middleware: [NavigationMiddleware<MySaasa>()]);
+        initialState: MySaasa((b) => b.moduleStates = {}));
 
     return Provider<Store<MySaasa>>.value(
         value: reduxStore,

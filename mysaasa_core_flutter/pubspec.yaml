@@ -10,6 +10,10 @@ environment:
 dependencies:
   mysaasa_core:
     path: ../mysaasa_core
+  provider: ^2.0.1
+  flutter_redux: ^0.5.3
+  
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.14.11"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.2"
   fixnum:
     dependency: transitive
     description:
@@ -58,7 +51,7 @@ packages:
     source: hosted
     version: "0.10.9"
   flutter:
-    dependency: "direct main"
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -69,13 +62,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.3"
-  flutter_redux_navigation:
-    dependency: transitive
-    description:
-      name: flutter_redux_navigation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -96,9 +82,16 @@ packages:
     source: hosted
     version: "1.1.6"
   mysaasa_core:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "../mysaasa_core"
+      relative: true
+    source: path
+    version: "0.0.1"
+  mysaasa_core_flutter:
+    dependency: "direct main"
+    description:
+      path: "../mysaasa_core_flutter"
       relative: true
     source: path
     version: "0.0.1"
@@ -137,6 +130,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  redux_persist:
+    dependency: transitive
+    description:
+      name: redux_persist
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -170,6 +170,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  synchronized:
+    dependency: transitive
+    description:
+      name: synchronized
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   term_glyph:
     dependency: transitive
     description:

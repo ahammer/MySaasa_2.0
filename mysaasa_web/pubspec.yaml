@@ -8,13 +8,12 @@ environment:
 dependencies:
   flutter_web: any
   flutter_web_ui: any
-  mysaasa_core:
-          path: ../mysaasa_core
+  mysaasa_core_web:
+          path: ../mysaasa_core_web
 
 dev_dependencies:
   build_runner: ^1.4.0
   build_web_compilers: ^2.0.0
-  pedantic: ^1.0.0
 
 dependency_overrides:
   flutter_web:
