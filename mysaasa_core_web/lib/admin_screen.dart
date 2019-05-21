@@ -4,7 +4,6 @@ import 'package:mysaasa_core/strings/strings.dart';
 import 'package:mysaasa_core_web/mysaasa_flutter_module.dart';
 import 'package:provider/provider.dart';
 
-
 import 'core_modules/home/home_screen.dart';
 
 class AdminScreen extends StatefulWidget {
