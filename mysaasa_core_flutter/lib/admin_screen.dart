@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mysaasa_core/module_manager/module_manager.dart';
 import 'package:mysaasa_core/strings/strings.dart';
+import 'package:mysaasa_core_flutter/core_modules/home/noise.dart';
 import 'package:mysaasa_core_flutter/mysaasa_flutter_module.dart';
 import 'package:provider/provider.dart';
 
@@ -25,8 +26,10 @@ class _AdminScreenState extends State<AdminScreen> {
                     theme: ThemeData.light(),
                     title: Strings.title,
                     home: Scaffold(
+                      drawer: Container(width:200, color: Theme.of(context).backgroundColor, child:NoiseWidget()),
                         appBar: AppBar(
                           title: Text("MySaasa"),
+                          
                           actions: <Widget>[
                             ...moduleManager.plugins
                                 .whereType<FlutterModule>()
