@@ -21,7 +21,8 @@ MySaasa reducer(MySaasa old, dynamic action) {
   if (action is Action) {    
     var type = action.getType();
     return old.rebuild((b){
-      b.moduleStates[type] = action.reduce(old.getState());
+      var oldState = old.moduleStates[type];
+      b.moduleStates[type] = action.reduce(oldState);
       return b;
     });
   }

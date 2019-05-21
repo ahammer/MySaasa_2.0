@@ -11,6 +11,8 @@ class AddUserAction extends Action<UserStore> {
 
   @override
   UserStore reduce(UserStore old) {
+    if (old == null) 
+      throw new Exception("State can not be null");
     User newUser = User(
         username: username, hashed_password: "${(password + salt).hashCode}", salt: salt);
     final newList = List<User>();
