@@ -2,6 +2,7 @@ import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
 import 'package:mysaasa_core/module_manager/module_manager.dart';
 import 'package:mysaasa_core/strings/strings.dart';
+import 'package:mysaasa_core_web/core_modules/home_screen_module.dart';
 import 'package:mysaasa_core_web/mysaasa_flutter_module.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +11,8 @@ class AdminScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ModuleManager>(
         builder: (ctx, moduleManager, _) =>
-            ListenableProvider<AdminScreenState>.value(
-                listenable: AdminScreenState(moduleManager),
+            ChangeNotifierProvider<AdminScreenState>.value(
+                notifier: AdminScreenState(moduleManager),
                 child: MaterialApp(
                     theme: ThemeData.light(),
                     title: Strings.title,
@@ -35,27 +36,15 @@ class AdminScreen extends StatelessWidget {
   }
 }
 
-class AdminScreenState implements Listenable {
+class AdminScreenState extends ChangeNotifier {
   FlutterModule selectedModule;
 
-  List<VoidCallback> listeners = List();
-
   AdminScreenState(ModuleManager moduleManager) {
-    selectedModule = moduleManager.plugins[0];
+    selectedModule = moduleManager.plugins.firstWhere((it)=>it is HomeScreenModule);
   }
 
   setModule(FlutterModule it) {
     selectedModule = it;
-    listeners.forEach((it)=>it());
-  }
-
-  @override
-  void addListener(listener) {
-   listeners.add(listener);
-  }
-
-  @override
-  void removeListener(listener) {
-    listeners.remove(listener);
+    notifyListeners();
   }
 }

@@ -1,6 +1,6 @@
 
 import 'package:flutter_web/material.dart';
-import '../mysaasa_flutter_module.dart';
+import 'package:mysaasa_core_web/mysaasa_flutter_module.dart';
 
 import 'home/home_screen.dart';
 
