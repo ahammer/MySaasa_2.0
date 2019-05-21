@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        ".gitignore": true,
+        "**/.*": true,
+        "**/.dart_tool": true,
+        "**/.gitignore": true,
+        "**/.idea": true,
+        "**/*.iml": true,
+        "**/*.log": true,
+        "**/build": true
+    }
+}
