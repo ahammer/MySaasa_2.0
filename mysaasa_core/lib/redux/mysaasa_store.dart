@@ -19,7 +19,11 @@ abstract class Action<T> {
 
 MySaasa reducer(MySaasa old, dynamic action) {
   if (action is Action) {    
-    return old.rebuild((b)=>b.moduleStates[action.getType()] = action.reduce(old.getState()));
+    var type = action.getType();
+    return old.rebuild((b){
+      b.moduleStates[type] = action.reduce(old.getState());
+      return b;
+    });
   }
   return old;
 

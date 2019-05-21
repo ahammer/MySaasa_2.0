@@ -14,4 +14,7 @@ class HomeScreenModule extends FlutterModule {
 
   @override
   IconData getIconData() => Icons.home;
+
+  @override
+  getInitialState() => Null;
 }

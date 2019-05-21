@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mysaasa_core/redux/user_store/user_store.dart';
 
 import '../mysaasa_flutter_module.dart';
 import 'users/users_screen.dart';
 
-class UserModule extends FlutterModule {
+class UserModule extends FlutterModule<UserStore> {
 
   @override
   String getTitle() => "User Module";
@@ -16,4 +17,7 @@ class UserModule extends FlutterModule {
 
   @override
   IconData getIconData() => Icons.supervisor_account;
+
+  @override
+  UserStore getInitialState() => UserStore([]);
 }
