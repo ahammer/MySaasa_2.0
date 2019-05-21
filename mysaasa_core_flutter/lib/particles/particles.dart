@@ -76,7 +76,7 @@ Random random = Random();
 
 class SimpleParticle extends Particle {
   Paint paint = Paint();
-  final max_age_ms = 1000;
+  final max_age_ms = random.nextInt(2000)+1000;
   final x = random.nextDouble();
   final y = random.nextDouble();
   final size = random.nextDouble() / 4;

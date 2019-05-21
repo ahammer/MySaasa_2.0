@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:mysaasa_core/redux/mysaasa_store.dart';
@@ -15,22 +17,36 @@ class UsersScreen extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         color: Theme.of(context).backgroundColor,
         width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Stack(
           children: <Widget>[
-            Expanded(
-              child: Card(
-                  child: Container(
-                      child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: [
-                  AddUserWidget(),
-                  Expanded(child: UserListWidget())
-                ]),
-              ))),
-            )
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Expanded(
+                  child: Card(
+                      child: Container(
+                          child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: UserListWidget(),
+                  ))),
+                )
+              ],
+            ),
+            Container(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed: () {
+                      showDialog(context: context, builder: (context)=>Dialog(child: AddUserWidget(onComplete: (){ 
+                        Navigator.of(context).pop();
+                      }),));
+                    },
+                  ),
+                ))
           ],
         ),
       );
@@ -50,37 +66,46 @@ class UserListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: StoreConnector<MySaasa, UserListViewModel>(converter: (store)=>UserListViewModel((store.state.moduleStates[UserStore] as UserStore).users), builder:(ctx, vm)=>ListView.builder(
-        itemBuilder: (BuildContext context, int index) => Text("${vm.users[index].username}"),
-        itemCount: vm.users.length,
-      ),
-    )));
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: StoreConnector<MySaasa, UserListViewModel>(
+              converter: (store) => UserListViewModel(
+                  (store.state.moduleStates[UserStore] as UserStore).users),
+              builder: (ctx, vm) => ListView.builder(
+                    itemBuilder: (BuildContext context, int index) => Card(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Username: ${vm.users[index].username} ",
+                            style: Theme.of(context).textTheme.display1,
+                          ),
+                        )),
+                    itemCount: vm.users.length,
+                  ),
+            )));
   }
 }
 
 class AddUserWidget extends StatelessWidget {
+  final VoidCallback onComplete;
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();
 
   AddUserWidget({
-    Key key,
+    Key key, @required this.onComplete,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
-        width: double.infinity,
+        width: 600,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Text("1001 Users"),
-            Expanded(child: Container()),
-            InlineField(title: "Username", controller: username),
-            InlineField(title: "Password", controller: password),
+          children: <Widget>[      
+            Flexible(flex:1, child:InlineField(title: "Username", controller: username)),
+            Flexible(flex:1, child:InlineField(title: "Password", controller: password)),
             FlatButton(
                 onPressed: () {
-                  Provider.of<Store<MySaasa>>(context)
-                      .dispatch(AddUserAction(username.text, password.text));
+                  Provider.of<Store<MySaasa>>(context).dispatch(AddUserAction(username.text, password.text));
+                  onComplete();
                 },
                 child: Text("Create User")),
           ],
@@ -106,8 +131,7 @@ class InlineField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: Container(
-          width: 200,
+      child: Container(          
           child: TextField(
             controller: controller,
             obscureText: obscureText,
