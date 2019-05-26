@@ -84,14 +84,14 @@ packages:
   mysaasa_core:
     dependency: transitive
     description:
-      path: "../mysaasa_core"
+      path: "..\\mysaasa_core"
       relative: true
     source: path
     version: "0.0.1"
   mysaasa_core_flutter:
     dependency: "direct main"
     description:
-      path: "../mysaasa_core_flutter"
+      path: "..\\mysaasa_core_flutter"
       relative: true
     source: path
     version: "0.0.1"

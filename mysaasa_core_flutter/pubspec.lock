@@ -58,7 +58,7 @@ packages:
   mysaasa_core:
     dependency: "direct main"
     description:
-      path: "../mysaasa_core"
+      path: "..\\mysaasa_core"
       relative: true
     source: path
     version: "0.0.1"
